@@ -1,0 +1,60 @@
+﻿@model CvecaraFlora.Modeli.Modeli.Narudzbina
+
+@{
+    Layout = null;
+}
+
+<h1 style="text-align:center;">Cvećara Flora</h1>
+<p style="text-align:center;">
+    Cvetna 1, Zrenjanin<br />
+    Email: cvecaraflora@gmail.com<br />
+    Telefon: 0612345678
+</p>
+
+<hr />
+
+<h2 style="text-align:center;">Potvrda o narudžbini cvetnog aranžmana</h2>
+
+<p><strong>Broj narudžbine:</strong> @Model.NarudzbinaID</p>
+<p><strong>Ime i prezime kupca:</strong> @Model.ImePrezimeKupca</p>
+<p><strong>Broj telefona:</strong> @Model.BrojTelefona</p>
+<p><strong>Datum kreiranja:</strong> @Model.DatumKreiranja.ToShortDateString()</p>
+<p><strong>Datum preuzimanja:</strong> @Model.DatumPreuzimanja.ToShortDateString()</p>
+<p><strong>Status:</strong> @Model.Status</p>
+
+<h3>Podaci o aranžmanu</h3>
+
+<table border="1" cellpadding="6" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Tip aranžmana</th>
+            <th>Vrsta cveća</th>
+            <th>Količina</th>
+            <th>Dodatna dekoracija</th>
+            <th>Ukupna cena</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.NazivTipaAranzmana</td>
+            <td>@Model.VrstaCveca</td>
+            <td>@Model.Kolicina</td>
+            <td>@Model.DodatnaDekoracija</td>
+            <td>@Model.UkupnaCena din</td>
+        </tr>
+    </tbody>
+</table>
+
+<br /><br />
+
+<table width="100%">
+    <tr>
+        <td>_________________________<br />Potpis kupca</td>
+        <td style="text-align:right;">_________________________<br />Potpis prodavca</td>
+    </tr>
+</table>
+
+<br />
+
+<button onclick="window.print()">Štampaj potvrdu</button><br>
+<a href="/NarudzbinaKontroler/Index">Nazad na narudžbine</a>

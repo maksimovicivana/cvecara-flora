@@ -1,0 +1,40 @@
+﻿@model List<CvecaraFlora.Modeli.Modeli.Narudzbina>
+
+@{
+    Layout = null;
+}
+
+<h1>Spisak svih narudžbina</h1>
+
+<table border="1" cellpadding="6" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kupac</th>
+            <th>Telefon</th>
+            <th>Datum preuzimanja</th>
+            <th>Status</th>
+            <th>Cena</th>
+            <th>Tip aranžmana</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var n in Model)
+        {
+            <tr>
+                <td>@n.NarudzbinaID</td>
+                <td>@n.ImePrezimeKupca</td>
+                <td>@n.BrojTelefona</td>
+                <td>@n.DatumPreuzimanja.ToShortDateString()</td>
+                <td>@n.Status</td>
+                <td>@n.UkupnaCena din</td>
+                <td>@n.NazivTipaAranzmana</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<button onclick="window.print()">Štampaj</button><br>
+<a href="/NarudzbinaKontroler/Index">Nazad na narudžbine</a>

@@ -1,0 +1,61 @@
+﻿@model CvecaraFlora.Modeli.Modeli.Narudzbina
+
+@{
+    ViewData["Title"] = "Detalji narudžbine";
+}
+
+<h1>Detalji narudžbine</h1>
+
+<h4>Podaci o kupcu</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ime i prezime kupca</th>
+        <td>@Model.ImePrezimeKupca</td>
+    </tr>
+    <tr>
+        <th>Broj telefona</th>
+        <td>@Model.BrojTelefona</td>
+    </tr>
+    <tr>
+        <th>Datum kreiranja</th>
+        <td>@Model.DatumKreiranja.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Datum preuzimanja</th>
+        <td>@Model.DatumPreuzimanja.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+</table>
+
+<h4>Podaci o cvetnom aranžmanu</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Tip aranžmana</th>
+        <td>@Model.NazivTipaAranzmana</td>
+    </tr>
+    <tr>
+        <th>Vrsta cveća</th>
+        <td>@Model.VrstaCveca</td>
+    </tr>
+    <tr>
+        <th>Količina</th>
+        <td>@Model.Kolicina</td>
+    </tr>
+    <tr>
+        <th>Dodatna dekoracija</th>
+        <td>@Model.DodatnaDekoracija</td>
+    </tr>
+    <tr>
+        <th>Ukupna cena</th>
+        <td>@Model.UkupnaCena din</td>
+    </tr>
+</table>
+
+<a href="/NarudzbinaKontroler/Index" class="btn btn-secondary">
+    Nazad na narudžbine
+</a>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvecaraFlora", "CvecaraFlora.csproj", "{3264AF08-C878-43C5-B501-99BC6F516BF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvecaraFlora.Modeli", "..\CvecaraFlora.Modeli\CvecaraFlora.Modeli.csproj", "{B6B07BE7-5227-4C5C-980A-A5FE7A796FFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvecaraFlora.WebServis", "..\CvecaraFlora.WebServis\CvecaraFlora.WebServis.csproj", "{8549783D-BC4E-4896-98D8-F040E2C15B77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvecaraFlora.PoslovnaLogika", "..\CvecaraFlora.PoslovnaLogika\CvecaraFlora.PoslovnaLogika.csproj", "{E446978E-3707-46E8-8371-AFC75E91C9ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CvecaraFlora.Repozitorijum", "..\CvecaraFlora.Repozitorijum\CvecaraFlora.Repozitorijum.csproj", "{FED0C22D-1453-4CBE-80D2-88F165A286A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3264AF08-C878-43C5-B501-99BC6F516BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3264AF08-C878-43C5-B501-99BC6F516BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3264AF08-C878-43C5-B501-99BC6F516BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3264AF08-C878-43C5-B501-99BC6F516BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B07BE7-5227-4C5C-980A-A5FE7A796FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B07BE7-5227-4C5C-980A-A5FE7A796FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B07BE7-5227-4C5C-980A-A5FE7A796FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B07BE7-5227-4C5C-980A-A5FE7A796FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8549783D-BC4E-4896-98D8-F040E2C15B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8549783D-BC4E-4896-98D8-F040E2C15B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8549783D-BC4E-4896-98D8-F040E2C15B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8549783D-BC4E-4896-98D8-F040E2C15B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E446978E-3707-46E8-8371-AFC75E91C9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E446978E-3707-46E8-8371-AFC75E91C9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E446978E-3707-46E8-8371-AFC75E91C9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E446978E-3707-46E8-8371-AFC75E91C9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED0C22D-1453-4CBE-80D2-88F165A286A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED0C22D-1453-4CBE-80D2-88F165A286A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED0C22D-1453-4CBE-80D2-88F165A286A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED0C22D-1453-4CBE-80D2-88F165A286A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B23248D-12F5-4E00-BDB5-442FA726CEA3}
+	EndGlobalSection
+EndGlobal

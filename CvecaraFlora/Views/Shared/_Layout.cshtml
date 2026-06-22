@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CvecaraFlora</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CvecaraFlora.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @{
+        var korisnickoIme = Context.Session.GetString("KorisnickoIme");
+    }
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/KorisnikKontroler/Prijava">Cvećara Flora</a>
+
+                <ul class="navbar-nav flex-grow-1">
+                    @if (!string.IsNullOrEmpty(korisnickoIme))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/NarudzbinaKontroler/Index">Narudžbine</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/TipAranzmanaKontroler/Index">Tipovi aranžmana</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/NarudzbinaKontroler/StampajSve">Štampa svih</a>
+                        </li>
+                    }
+                </ul>
+
+                @if (!string.IsNullOrEmpty(korisnickoIme))
+                {
+                    <span class="navbar-text me-3">@korisnickoIme</span>
+
+                    <a class="btn btn-outline-danger" href="/KorisnikKontroler/Odjava">
+                        Odjava
+                    </a>
+                }
+                else
+                {
+                    <a class="nav-link text-dark" href="/KorisnikKontroler/Prijava">
+                        Prijava
+                    </a>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - Cvećara Flora
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

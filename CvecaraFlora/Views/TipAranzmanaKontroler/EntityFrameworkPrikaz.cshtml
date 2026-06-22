@@ -1,0 +1,31 @@
+﻿@model List<CvecaraFlora.Modeli.Modeli.TipAranzmana>
+
+@{
+    ViewData["Title"] = "Entity Framework prikaz";
+}
+
+<h1>Tipovi aranžmana - Entity Framework</h1>
+
+<p>Ovi podaci su učitani primenom Entity Framework klasa.</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naziv</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tip in Model)
+        {
+            <tr>
+                <td>@tip.TipAranzmanaID</td>
+                <td>@tip.Naziv</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/TipAranzmanaKontroler/Index" class="btn btn-secondary">
+    Nazad na tipove aranžmana
+</a>

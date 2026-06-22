@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Dodavanje tipa aranžmana";
+}
+
+<h1>Dodavanje tipa aranžmana</h1>
+
+@if (ViewBag.Greska != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Greska
+    </div>
+}
+
+<form method="post">
+
+    <div class="mb-3">
+        <label class="form-label">Naziv tipa aranžmana</label>
+        <input type="text" name="naziv" value="@ViewBag.Naziv" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj
+    </button>
+
+</form>
+
+<br />
+
+<a href="/TipAranzmanaKontroler/Index">
+    Nazad na pregled
+</a>

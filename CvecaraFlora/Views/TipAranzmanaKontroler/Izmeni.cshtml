@@ -1,0 +1,35 @@
+﻿@model CvecaraFlora.Modeli.Modeli.TipAranzmana
+
+@{
+    ViewData["Title"] = "Izmena tipa aranžmana";
+}
+
+<h1>Izmena tipa aranžmana</h1>
+
+@if (ViewBag.Greska != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Greska
+    </div>
+}
+
+<form method="post">
+
+    <input type="hidden" name="TipAranzmanaID" value="@Model.TipAranzmanaID" />
+
+    <div class="mb-3">
+        <label class="form-label">Naziv tipa aranžmana</label>
+        <input type="text" name="Naziv" value="@Model.Naziv" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj izmene
+    </button>
+
+</form>
+
+<br />
+
+<a href="/TipAranzmanaKontroler/Index">
+    Nazad na pregled
+</a>

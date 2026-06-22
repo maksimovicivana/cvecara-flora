@@ -1,0 +1,115 @@
+﻿@model CvecaraFlora.ViewModeli.NarudzbinaViewModel
+
+@{
+    ViewData["Title"] = "Dodavanje narudžbine";
+}
+
+<h1>Dodavanje narudžbine</h1>
+
+@if (ViewBag.Greska != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Greska
+    </div>
+}
+
+<form method="post">
+
+    <h4>Podaci o kupcu</h4>
+
+    <div class="mb-3">
+        <label class="form-label">Ime i prezime kupca</label>
+        <input type="text" name="Narudzbina.ImePrezimeKupca" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Broj telefona</label>
+        <input type="text"
+               name="Narudzbina.BrojTelefona"
+               class="form-control"
+               pattern="^06[0-9]{7,8}$"
+               minlength="9"
+               maxlength="10"
+               required
+               title="Broj telefona mora početi sa 06 i imati 9 ili 10 cifara." />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Datum preuzimanja</label>
+        <input type="date"
+               name="Narudzbina.DatumPreuzimanja"
+               class="form-control"
+               value="@Model.Narudzbina.DatumPreuzimanja.ToString("yyyy-MM-dd")"
+               required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tip aranžmana</label>
+        <select name="Narudzbina.TipAranzmanaID" class="form-control" required>
+            <option value="0">-- Izaberite tip aranžmana --</option>
+
+            @foreach (var tip in Model.TipoviAranzmana)
+            {
+                <option value="@tip.TipAranzmanaID">@tip.Naziv</option>
+            }
+        </select>
+    </div>
+
+    <hr />
+
+    <h4>Podaci o cvetnom aranžmanu</h4>
+
+    <div class="mb-3">
+        <label class="form-label">Vrsta cveća</label>
+        <input type="text" name="Narudzbina.VrstaCveca" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Količina</label>
+        <input type="number" name="Narudzbina.Kolicina" min="1" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Dodatna dekoracija</label>
+        <input type="text" name="Narudzbina.DodatnaDekoracija" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ukupna cena</label>
+        <input type="number" step="1" min="1" name="Narudzbina.UkupnaCena" class="form-control" required />
+    </div>
+
+    <input type="hidden" name="Narudzbina.CenaStavke" value="0" />
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj
+    </button>
+
+</form>
+
+<br />
+
+<a href="/NarudzbinaKontroler/Index">
+    Nazad na pregled
+</a>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        var telefon = document.querySelector("[name='Narudzbina.BrojTelefona']").value;
+        var tip = document.querySelector("[name='Narudzbina.TipAranzmanaID']").value;
+
+        var telefonRegex = /^06[0-9]{7,8}$/;
+
+        if (!telefonRegex.test(telefon)) {
+            alert("Broj telefona mora početi sa 06 i imati 9 ili 10 cifara.");
+            e.preventDefault();
+            return;
+        }
+
+        if (tip === "0") {
+            alert("Morate izabrati tip aranžmana.");
+            e.preventDefault();
+            return;
+        }
+    });
+</script>

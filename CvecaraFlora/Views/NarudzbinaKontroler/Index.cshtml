@@ -1,0 +1,109 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<CvecaraFlora.Modeli.Modeli.Narudzbina>
+
+@{
+    ViewData["Title"] = "Narudžbine";
+    var uloga = Context.Session.GetString("Uloga");
+    var admin = uloga == "Administrator";
+    int redniBroj = 1;
+}
+
+<h1>Narudžbine</h1>
+
+<p>
+    Prijavljen korisnik: <strong>@Context.Session.GetString("KorisnickoIme")</strong>
+    | Uloga: <strong>@uloga</strong>
+</p>
+
+<form method="get" class="mb-3">
+    <input type="text"
+           name="pretraga"
+           value="@ViewBag.Pretraga"
+           class="form-control"
+           placeholder="Pretraga po imenu ili prezimenu kupca" />
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Pretraži</button>
+
+    <a href="/NarudzbinaKontroler/Index" class="btn btn-secondary">Prikaži sve</a>
+
+    <a href="/NarudzbinaKontroler/StampajSve" class="btn btn-dark">Štampa svih</a>
+
+    <a href="/NarudzbinaKontroler/StampajFiltrirano?pretraga=@ViewBag.Pretraga" class="btn btn-outline-dark">
+        Štampa filtriranih
+    </a>
+</form>
+
+@if (Model.Count == 0 && !string.IsNullOrWhiteSpace(ViewBag.Pretraga))
+{
+    <div class="alert alert-warning">
+        Ne postoji kupac sa unetim imenom ili prezimenom.
+    </div>
+}
+
+@if (admin)
+{
+    <p>
+        <a href="/NarudzbinaKontroler/Dodaj" class="btn btn-success">
+            Dodaj novu narudžbinu
+        </a>
+    </p>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Redni broj</th>
+            <th>ID</th>
+            <th>Kupac</th>
+            <th>Telefon</th>
+            <th>Datum kreiranja</th>
+            <th>Datum preuzimanja</th>
+            <th>Status</th>
+            <th>Ukupna cena</th>
+            <th>Tip aranžmana</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var n in Model)
+        {
+            <tr>
+                <td>@redniBroj</td>
+                <td>@n.NarudzbinaID</td>
+                <td>@n.ImePrezimeKupca</td>
+                <td>@n.BrojTelefona</td>
+                <td>@n.DatumKreiranja.ToShortDateString()</td>
+                <td>@n.DatumPreuzimanja.ToShortDateString()</td>
+                <td>@n.Status</td>
+                <td>@n.UkupnaCena</td>
+                <td>@n.NazivTipaAranzmana</td>
+                <td>
+                    <a href="/NarudzbinaKontroler/Detalji/@n.NarudzbinaID" class="btn btn-info">
+                        Detalji
+                    </a>
+
+                    <a href="/NarudzbinaKontroler/Potvrda/@n.NarudzbinaID" class="btn btn-secondary">
+                        Potvrda
+                    </a>
+
+                    @if (admin)
+                    {
+                        <a href="/NarudzbinaKontroler/Izmeni/@n.NarudzbinaID" class="btn btn-warning">
+                            Izmeni
+                        </a>
+
+                        <a href="/NarudzbinaKontroler/Obrisi/@n.NarudzbinaID"
+                           class="btn btn-danger"
+                           onclick="return confirm('Da li ste sigurni da želite brisanje?')">
+                            Obriši
+                        </a>
+                    }
+                </td>
+            </tr>
+
+            redniBroj++;
+        }
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<CvecaraFlora.Modeli.Modeli.TipAranzmana>
+
+@{
+    ViewData["Title"] = "Tipovi aranžmana";
+    var uloga = Context.Session.GetString("Uloga");
+    var admin = uloga == "Administrator";
+    int redniBroj = 1;
+}
+
+<h1>Tipovi aranžmana</h1>
+
+<p>
+    <a href="/TipAranzmanaKontroler/EntityFrameworkPrikaz"
+       class="btn btn-info">
+        Prikaz preko Entity Framework-a
+    </a>
+</p>
+
+@if (admin)
+{
+    <p>
+        <a href="/TipAranzmanaKontroler/Dodaj" class="btn btn-success">
+            Dodaj novi tip aranžmana
+        </a>
+    </p>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Redni broj</th>
+            <th>ID</th>
+            <th>Naziv</th>
+            @if (admin)
+            {
+                <th>Akcije</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tip in Model)
+        {
+            <tr>
+                <td>@redniBroj</td>
+                <td>@tip.TipAranzmanaID</td>
+                <td>@tip.Naziv</td>
+
+                @if (admin)
+                {
+                    <td>
+                        <a href="/TipAranzmanaKontroler/Izmeni/@tip.TipAranzmanaID"
+                           class="btn btn-warning">
+                            Izmeni
+                        </a>
+
+                        <a href="/TipAranzmanaKontroler/Obrisi/@tip.TipAranzmanaID"
+                           class="btn btn-danger"
+                           onclick="return confirm('Da li ste sigurni da želite brisanje?')">
+                            Obriši
+                        </a>
+                    </td>
+                }
+            </tr>
+
+            redniBroj++;
+        }
+    </tbody>
+</table>
